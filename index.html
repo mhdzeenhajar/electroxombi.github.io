@@ -42,9 +42,9 @@
     <!-- Hero Section -->
     <header class="hero" id="home">
         <div class="hero-tag">// CODE: STUDENT_BUDGET_COMPATIBLE</div>
-        <h1 class="hero-title glitch-text">uOttawa Tech Acting Up?<br>Battery Draining Fast?</h1>
+        <h1 class="hero-title glitch-text">Tech Acting Up?<br>Battery Draining Fast?</h1>
         <p class="hero-subtitle">
-            On-campus electronics repair run by a first-year Computer Engineering student.<br>
+            electronics repair run by a second-year Computer Engineering student.<br>
             Fast, transparent, and built for a student budget.
         </p>
 
@@ -92,7 +92,7 @@
     <!-- Tiered Pricing -->
     <section id="pricing">
         <div class="section-header">
-            <span class="section-tag">// COST_ESTIMATOR_V1.0</span>
+            <span class="section-tag">// COST_ESTIMATOR_V1</span>
             <h2 class="section-title">Flat Labor Rates</h2>
         </div>
 
@@ -165,7 +165,7 @@
                         <span class="control-dot yellow"></span>
                         <span class="control-dot green"></span>
                     </div>
-                    <div class="terminal-title">electroxombi@uottawa: ~/booking-form</div>
+                    <div class="terminal-title">electroxombi@gmail.com: ~/booking-form</div>
                     <div style="width: 46px;"></div> <!-- visual spacer -->
                 </div>
 
@@ -186,9 +186,9 @@
 
                         <!-- uOttawa Email -->
                         <div class="form-group">
-                            <label class="form-label" for="email">uOttawa Email <span
+                            <label class="form-label" for="email">Email <span
                                     class="required-indicator">(Required)</span></label>
-                            <input class="terminal-input" type="email" id="email" placeholder="e.g. jdoe123@uottawa.ca"
+                            <input class="terminal-input" type="email" id="email" placeholder="e.g. jdoe123@gmail.com"
                                 required>
                         </div>
 
@@ -313,20 +313,20 @@
             const counterLabel = document.getElementById('live-counter-label');
             const pulseDot = document.querySelector('.live-pulse-dot');
             const counterContainer = document.querySelector('.live-counter-container');
-            
+
             if (!counterLabel || !pulseDot || !counterContainer) return;
-            
+
             try {
                 // Fetch from Apps Script with action=count
                 const response = await fetch(`${WEB_APP_URL}?action=count`);
                 if (!response.ok) throw new Error("Network response was not ok");
-                
+
                 const data = await response.json();
                 if (data.status === 'success' && typeof data.count === 'number') {
                     const clientCount = data.count;
                     const totalSpots = 5;
                     const spotsRemaining = Math.max(0, totalSpots - clientCount);
-                    
+
                     if (spotsRemaining > 0) {
                         counterLabel.textContent = `FREE LABOR SPOTS: [ ${spotsRemaining} / ${totalSpots} ]`;
                         pulseDot.style.backgroundColor = 'var(--cyan-glow)';
