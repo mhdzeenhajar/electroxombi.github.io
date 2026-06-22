@@ -357,8 +357,8 @@ section {
 /* Services & Transparency Section */
 .services-intro {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 40px;
+    grid-template-columns: 1fr; /* Changed from 1.2fr 0.8fr to fill the space */
+    gap: 30px;
     margin-bottom: 60px;
     align-items: center;
 }
@@ -877,4 +877,45 @@ footer {
     .launch-promo-box {
         padding: 20px;
     }
+}
+
+/* Split Field Form Adjustments */
+.label-with-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.label-with-action .form-label {
+    margin-bottom: 0;
+}
+
+.terminal-action-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-dimmed);
+    font-family: inherit;
+    font-size: 0.75rem;
+    cursor: pointer;
+    padding: 0;
+    text-transform: uppercase;
+    transition: color var(--transition-speed);
+}
+
+.terminal-action-btn:hover {
+    color: var(--purple-glow);
+    text-shadow: 0 0 5px rgba(189, 0, 255, 0.4);
+}
+
+.required-indicator {
+    color: var(--purple-glow);
+    font-size: 0.75rem;
+    margin-left: 4px;
+}
+
+.optional-indicator {
+    color: var(--text-dimmed);
+    font-size: 0.75rem;
+    margin-left: 4px;
 }

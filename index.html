@@ -8,7 +8,7 @@
 
     <!-- SEO Meta Tags -->
     <meta name="description"
-        content="On-campus electronics repair run by a first-year uOttawa Computer Engineering student. Fast, transparent, and built for a student budget. Diagnostics for just $10.">
+        content="On-campus electronics repair run by a second-year uOttawa Computer Engineering student. Fast, transparent, and built for a student budget. Diagnostics for just $10.">
     <meta name="keywords"
         content="uOttawa, electronics repair, laptop repair, screen replacement, battery swap, computer engineering, Ottawa university, student budget, phone repair">
     <meta name="author" content="MHD Zeen Hajar">
@@ -17,7 +17,7 @@
     <meta property="og:title" content="ElectroXOMBI Solutions // On-Campus Electronics Repair">
     <meta property="og:description"
         content="Fast, transparent electronics repair for uOttawa students. Pay at-cost for parts + a low flat labor rate.">
-    <meta property="og:image" content="assets/flyer.png">
+    <meta property="og:image" content="Assets/flyer.png">
     <meta property="og:url" content="https://electroxombi.github.io">
     <meta property="og:type" content="website">
 
@@ -28,6 +28,7 @@
 <body>
 
     <!-- Nav Bar -->
+
     <nav class="navbar" id="top-nav">
         <a href="#home" class="nav-brand">[ Electro<span>XOMBI</span> ]</a>
         <ul class="nav-links">
@@ -64,29 +65,22 @@
         </div>
 
         <div class="services-intro">
-            <div>
-                <div class="transparency-card" style="margin-bottom: 25px;">
-                    <h3>The "At-Cost Parts" Promise</h3>
-                    <p>
-                        No part markups. You pay exactly what the replacement screen or battery costs on Amazon or eBay.
-                        I only charge a fair, flat labor fee to install it safely. Proof of purchase invoice will be
-                        sent directly to you.
-                    </p>
-                </div>
-
-                <div class="diagnostic-panel">
-                    <h3>The Diagnostic Guarantee</h3>
-                    <p>
-                        <span class="highlight-price">$10 Flat Diagnostic Fee</span>
-                        Not sure what's wrong? I'll open it up and diagnose the issue. If you decide to go ahead with
-                        the repair, the diagnostic fee is completely waived!
-                    </p>
-                </div>
+            <div class="transparency-card" style="margin-bottom: 25px;">
+                <h3>The "At-Cost Parts" Promise</h3>
+                <p>
+                    No part markups. You pay exactly what the replacement screen or battery costs on Amazon or eBay.
+                    I only charge a fair, flat labor fee to install it safely. Proof of purchase invoice will be
+                    sent directly to you.
+                </p>
             </div>
 
-            <!-- Marketing flyer showcase -->
-            <div class="flyer-container">
-                <img src="assets/flyer.png" alt="ElectroXOMBI Solutions Promo Flyer" class="flyer-img">
+            <div class="diagnostic-panel">
+                <h3>The Diagnostic Guarantee</h3>
+                <p>
+                    <span class="highlight-price">$10 Flat Diagnostic Fee</span>
+                    Not sure what's wrong? I'll open it up and diagnose the issue. If you decide to go ahead with
+                    the repair, the diagnostic fee is completely waived!
+                </p>
             </div>
         </div>
     </section>
@@ -179,33 +173,68 @@
                     </div>
 
                     <form class="terminal-form" id="bookingForm" onsubmit="handleFormSubmit(event)">
-                        <!-- Name & Email -->
+                        <!-- Client Name -->
                         <div class="form-group">
-                            <label class="form-label" for="name">Client Name & uOttawa Email</label>
-                            <input class="terminal-input" type="text" id="name"
-                                placeholder="John Doe // jdoe123@uottawa.ca" required>
+                            <label class="form-label" for="name">Client Name <span
+                                    class="required-indicator">(Required)</span></label>
+                            <input class="terminal-input" type="text" id="name" placeholder="e.g. John Doe" required>
                         </div>
 
-                        <!-- Device Type & Model -->
+                        <!-- uOttawa Email -->
                         <div class="form-group">
-                            <label class="form-label" for="device">Device Type & Model Number</label>
-                            <input class="terminal-input" type="text" id="device"
-                                placeholder="e.g. Dell Inspiron 15 3567 // iPhone 12" required>
+                            <label class="form-label" for="email">uOttawa Email <span
+                                    class="required-indicator">(Required)</span></label>
+                            <input class="terminal-input" type="email" id="email" placeholder="e.g. jdoe123@uottawa.ca"
+                                required>
+                        </div>
+
+                        <!-- Device Type -->
+                        <div class="form-group">
+                            <div class="label-with-action">
+                                <label class="form-label" for="device_type">Device Type <span
+                                        class="optional-indicator">(Optional)</span></label>
+                                <button type="button" class="terminal-action-btn"
+                                    onclick="autofillField('device_type', 'IDK')">[ IDK ]</button>
+                            </div>
+                            <input class="terminal-input" type="text" id="device_type"
+                                placeholder="e.g. Laptop, iPhone">
+                        </div>
+
+                        <!-- Model Number -->
+                        <div class="form-group">
+                            <div class="label-with-action">
+                                <label class="form-label" for="model_number">Model Number <span
+                                        class="optional-indicator">(Optional)</span></label>
+                                <button type="button" class="terminal-action-btn"
+                                    onclick="autofillField('model_number', 'IDK')">[ IDK ]</button>
+                            </div>
+                            <input class="terminal-input" type="text" id="model_number"
+                                placeholder="e.g. Dell Inspiron 15 3567 // A2633">
                         </div>
 
                         <!-- Symptoms / Details -->
                         <div class="form-group">
-                            <label class="form-label" for="symptoms">Symptoms / Repair Details</label>
+                            <div class="label-with-action">
+                                <label class="form-label" for="symptoms">Symptoms / Repair Details <span
+                                        class="optional-indicator">(Optional)</span></label>
+                                <button type="button" class="terminal-action-btn"
+                                    onclick="autofillField('symptoms', 'IDK')">[ IDK ]</button>
+                            </div>
                             <textarea class="terminal-textarea" id="symptoms"
-                                placeholder="e.g. Screen is cracked, battery drains in 30 minutes, overheating..."
-                                required></textarea>
+                                placeholder="e.g. Screen is cracked, battery drains in 30 minutes, overheating..."></textarea>
                         </div>
 
                         <!-- Meeting Spot Dropdown -->
                         <div class="form-group">
-                            <label class="form-label" for="location">Preferred On-Campus Meeting Spot</label>
-                            <select class="terminal-select" id="location" required>
-                                <option value="" disabled selected>Select location...</option>
+                            <div class="label-with-action">
+                                <label class="form-label" for="location">Preferred On-Campus Meeting Spot <span
+                                        class="optional-indicator">(Optional)</span></label>
+                                <button type="button" class="terminal-action-btn"
+                                    onclick="autofillField('location', 'Undecided')">[ IDK ]</button>
+                            </div>
+                            <select class="terminal-select" id="location">
+                                <option value="" selected>Select location (optional)...</option>
+                                <option value="Undecided">Undecided / Discuss Later</option>
                                 <option value="Morisset Library">Morisset Library (Lobby/Study Rooms)</option>
                                 <option value="STEM Complex Café">STEM Complex Café</option>
                                 <option value="University Centre Lobby">University Centre Lobby</option>
@@ -239,7 +268,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="assets/logo.png" alt="ElectroXOMBI Logo">
+                <img src="Assets/logo.png" alt="ElectroXOMBI Logo">
                 <div class="footer-logo-text">[ Electro<span>XOMBI</span> ]</div>
             </div>
 
@@ -258,23 +287,30 @@
 
     <!-- Interactive Logic Javascript -->
     <script>
-        // Set your Tally.so or Google Form base link here:
-        // Prefill syntax will be appended automatically if fields are configured
-        // Example: https://docs.google.com/forms/d/e/1FAIpQLSfYourFormId/viewform
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfp_e1Yy284r6gqXW6n-DEX2Gep1F5uWj1xP5tL8Bw-w1-rLQ/viewform";
+        // Google Apps Script Web App URL for database recording and automated emails
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbymaKEtOukCa1Iot76b0WI0mdWjxrauTuOzSWpMefoVZ-j9iAJeKktlPIy6uwldJdES/exec";
 
-        // Optional Google Form Prefill Parameter IDs (obtain by generating a prefilled link in Google Forms)
-        // Set these to match the entry numbers of your specific Google Form fields
+        // Keep Google Form URL and field IDs as secondary variables
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfp_e1Yy284r6gqXW6n-DEX2Gep1F5uWj1xP5tL8Bw-w1-rLQ/viewform";
         const GOOGLE_FORM_ENTRY_IDS = {
-            nameEmail: "entry.1000001", // Name & Email field ID
-            device: "entry.1000002",    // Device Model field ID
-            symptoms: "entry.1000003",  // Symptoms field ID
-            location: "entry.1000004"   // Location field ID
+            nameEmail: "entry.1000001",
+            device: "entry.1000002",
+            symptoms: "entry.1000003",
+            location: "entry.1000004"
         };
 
         function scrollToBooking() {
             const bookSection = document.getElementById('book');
             bookSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Autofills terminal input fields
+        function autofillField(fieldId, value) {
+            const field = document.getElementById(fieldId);
+            if (field) {
+                field.value = value;
+                field.focus();
+            }
         }
 
         // Auto-selects service tier and fills input, then scrolls to booking
@@ -291,41 +327,84 @@
             event.preventDefault();
 
             // Fetch input values
-            const nameVal = document.getElementById('name').value;
-            const deviceVal = document.getElementById('device').value;
-            const symptomsVal = document.getElementById('symptoms').value;
-            const locationVal = document.getElementById('location').value;
+            const nameVal = document.getElementById('name').value.trim();
+            const emailVal = document.getElementById('email').value.trim();
+            const deviceTypeVal = document.getElementById('device_type').value.trim() || 'IDK';
+            const modelNumVal = document.getElementById('model_number').value.trim() || 'IDK';
+            const symptomsVal = document.getElementById('symptoms').value.trim() || 'IDK';
+            const locationVal = document.getElementById('location').value || 'Undecided';
 
-            // Generate Prefilled URL (works with Google Form URL parameters)
-            const prefilledUrl = `${GOOGLE_FORM_BASE_URL}?` +
-                `${GOOGLE_FORM_ENTRY_IDS.nameEmail}=${encodeURIComponent(nameVal)}` +
-                `&${GOOGLE_FORM_ENTRY_IDS.device}=${encodeURIComponent(deviceVal)}` +
-                `&${GOOGLE_FORM_ENTRY_IDS.symptoms}=${encodeURIComponent(symptomsVal)}` +
-                `&${GOOGLE_FORM_ENTRY_IDS.location}=${encodeURIComponent(locationVal)}`;
+            // Combine inputs to match alternative schemas
+            const combinedNameEmail = `${nameVal} // ${emailVal}`;
+            const combinedDevice = `${deviceTypeVal} // ${modelNumVal}`;
 
-            // UI animation: Hide form, show success command screen
+            // Build form data parameters (sends standard names and form entry keys for total robustness)
+            const formData = new URLSearchParams();
+            formData.append('name', nameVal);
+            formData.append('email', emailVal);
+            formData.append('device_type', deviceTypeVal);
+            formData.append('model_number', modelNumVal);
+            formData.append('symptoms', symptomsVal);
+            formData.append('location', locationVal);
+            formData.append('nameEmail', combinedNameEmail);
+            formData.append('device', combinedDevice);
+
+            // Map to form entry IDs as well
+            formData.append(GOOGLE_FORM_ENTRY_IDS.nameEmail, combinedNameEmail);
+            formData.append(GOOGLE_FORM_ENTRY_IDS.device, combinedDevice);
+            formData.append(GOOGLE_FORM_ENTRY_IDS.symptoms, symptomsVal);
+            formData.append(GOOGLE_FORM_ENTRY_IDS.location, locationVal);
+
+            // UI animation: Hide form, show loading
             const form = document.getElementById('bookingForm');
             const successMsg = document.getElementById('successMessage');
-            const fallbackLink = document.getElementById('fallback-redirect-link');
 
             form.style.display = 'none';
             successMsg.style.display = 'flex';
-            fallbackLink.href = prefilledUrl;
+            successMsg.innerHTML = `<p class="glitch-text" style="color: var(--cyan-glow)">&gt; Compiling repair specs and securing connection...</p>`;
 
-            // Perform terminal style status printout in console log
-            console.log("-----------------------------------------");
-            console.log("ElectroXOMBI Booking Client Submit:");
-            console.log("Name & Email:", nameVal);
-            console.log("Device:", deviceVal);
-            console.log("Symptoms:", symptomsVal);
-            console.log("Location:", locationVal);
-            console.log("Redirect Destination URL:", prefilledUrl);
-            console.log("-----------------------------------------");
-
-            // Redirect client after simulation delay
-            setTimeout(() => {
-                window.open(prefilledUrl, '_blank');
-            }, 2500);
+            // Send to Google Apps Script Web App
+            fetch(WEB_APP_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: formData.toString()
+            })
+                .then(() => {
+                    // Success output printed directly inside the terminal window
+                    successMsg.innerHTML = `
+                    <pre style="color: var(--purple-glow); text-shadow: 0 0 10px rgba(189,0,255,0.4)">
+███████ ██    ██  ██████  ██████  ███████ ███████
+██      ██    ██ ██      ██       ██      ██
+███████ ██    ██ ██      ██       █████   ███████
+     ██ ██    ██ ██      ██       ██           ██
+███████  ██████   ██████  ██████  ███████ ███████
+                    </pre>
+                    <p style="color: var(--cyan-glow); font-weight: 700; margin-top: 10px">&gt; Ticket submitted successfully!</p>
+                    <p>&gt; Data recorded to secure ElectroXOMBI database server.</p>
+                    <p>&gt; A confirmation copy has been dispatched to: ${emailVal}</p>
+                    <p>&gt; Zeen will review your specs and contact you shortly.</p>
+                `;
+                })
+                .catch((err) => {
+                    console.error("Submission error:", err);
+                    // Fallback redirect if something went wrong
+                    const prefilledUrl = `${GOOGLE_FORM_BASE_URL}?` +
+                        `${GOOGLE_FORM_ENTRY_IDS.nameEmail}=${encodeURIComponent(combinedNameEmail)}` +
+                        `&${GOOGLE_FORM_ENTRY_IDS.device}=${encodeURIComponent(combinedDevice)}` +
+                        `&${GOOGLE_FORM_ENTRY_IDS.symptoms}=${encodeURIComponent(symptomsVal)}` +
+                        `&${GOOGLE_FORM_ENTRY_IDS.location}=${encodeURIComponent(locationVal)}`;
+                    successMsg.innerHTML = `
+                    <p style="color: var(--danger)">&gt; System error dispatching ticket.</p>
+                    <p>&gt; Redirecting to manual submission tunnel...</p>
+                    <p>&gt; If you are not redirected, <a href="${prefilledUrl}" target="_blank">click here to proceed</a>.</p>
+                `;
+                    setTimeout(() => {
+                        window.open(prefilledUrl, '_blank');
+                    }, 2000);
+                });
         }
     </script>
 </body>
