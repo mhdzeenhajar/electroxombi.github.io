@@ -289,6 +289,78 @@ a:hover {
     font-weight: 700;
 }
 
+/* Live Counter inside Launch Promo Box */
+.live-counter-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    padding: 6px 14px;
+    background-color: rgba(189, 0, 255, 0.05);
+    border: 1px solid rgba(189, 0, 255, 0.2);
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--text-main);
+    transition: all var(--transition-speed) ease;
+    animation: pulse-border 3s infinite alternate;
+}
+
+.live-counter-container.synced {
+    background-color: rgba(0, 243, 255, 0.05);
+    border-color: rgba(0, 243, 255, 0.2);
+    animation: pulse-border-cyan 3s infinite alternate;
+}
+
+.live-pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ffbd2e; /* yellow during sync */
+    box-shadow: 0 0 8px #ffbd2e;
+    margin-right: 10px;
+    display: inline-block;
+    animation: live-dot-pulse 1.2s infinite;
+}
+
+@keyframes live-dot-pulse {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.9);
+        opacity: 0.6;
+    }
+}
+
+@keyframes pulse-border {
+    0% {
+        border-color: rgba(189, 0, 255, 0.2);
+        box-shadow: 0 0 5px rgba(189, 0, 255, 0.1);
+    }
+    100% {
+        border-color: rgba(189, 0, 255, 0.5);
+        box-shadow: 0 0 12px rgba(189, 0, 255, 0.2);
+    }
+}
+
+@keyframes pulse-border-cyan {
+    0% {
+        border-color: rgba(0, 243, 255, 0.2);
+        box-shadow: 0 0 5px rgba(0, 243, 255, 0.1);
+    }
+    100% {
+        border-color: rgba(0, 243, 255, 0.5);
+        box-shadow: 0 0 12px rgba(0, 243, 255, 0.2);
+    }
+}
+
 /* Cyber CTA Button */
 .cta-button {
     background: transparent;

@@ -52,6 +52,10 @@
         <div class="launch-promo-box">
             <h4>🚀 LAUNCH SPECIAL ALERT</h4>
             <p>First 5 Clients Are 100% FREE (Labor Only)! Only pay for parts.</p>
+            <div class="live-counter-container">
+                <span class="live-pulse-dot"></span>
+                <span class="live-counter-label" id="live-counter-label">DATABASE SYNCING...</span>
+            </div>
         </div>
 
         <button class="cta-button" onclick="scrollToBooking()">[ Secure Your Free Repair ]</button>
@@ -303,6 +307,52 @@
             const bookSection = document.getElementById('book');
             bookSection.scrollIntoView({ behavior: 'smooth' });
         }
+
+        // Fetch and update the live counter for free spots
+        async function updateLiveCounter() {
+            const counterLabel = document.getElementById('live-counter-label');
+            const pulseDot = document.querySelector('.live-pulse-dot');
+            const counterContainer = document.querySelector('.live-counter-container');
+            
+            if (!counterLabel || !pulseDot || !counterContainer) return;
+            
+            try {
+                // Fetch from Apps Script with action=count
+                const response = await fetch(`${WEB_APP_URL}?action=count`);
+                if (!response.ok) throw new Error("Network response was not ok");
+                
+                const data = await response.json();
+                if (data.status === 'success' && typeof data.count === 'number') {
+                    const clientCount = data.count;
+                    const totalSpots = 5;
+                    const spotsRemaining = Math.max(0, totalSpots - clientCount);
+                    
+                    if (spotsRemaining > 0) {
+                        counterLabel.textContent = `FREE LABOR SPOTS: [ ${spotsRemaining} / ${totalSpots} ]`;
+                        pulseDot.style.backgroundColor = 'var(--cyan-glow)';
+                        pulseDot.style.boxShadow = '0 0 8px var(--cyan-glow)';
+                    } else {
+                        counterLabel.textContent = `ALL FREE SPOTS CLAIMED!`;
+                        pulseDot.style.backgroundColor = 'var(--text-dimmed)';
+                        pulseDot.style.boxShadow = 'none';
+                        pulseDot.style.animation = 'none';
+                    }
+                    counterContainer.classList.add('synced');
+                } else {
+                    throw new Error("Invalid response format");
+                }
+            } catch (error) {
+                console.warn("Failed to fetch live spot count, using fallback:", error);
+                // Fallback to active promo status
+                counterLabel.textContent = `FREE LABOR SPOTS: [ 5 / 5 ]`;
+                pulseDot.style.backgroundColor = 'var(--cyan-glow)';
+                pulseDot.style.boxShadow = '0 0 8px var(--cyan-glow)';
+                counterContainer.classList.add('synced');
+            }
+        }
+
+        // Run counter sync on page load
+        window.addEventListener('DOMContentLoaded', updateLiveCounter);
 
         // Autofills terminal input fields
         function autofillField(fieldId, value) {
